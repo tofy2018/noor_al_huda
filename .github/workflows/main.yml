@@ -33,8 +33,9 @@ jobs:
           rm -rf android
           flutter create . --platforms android
 
-      - name: Install dependencies
+      - name: Fix and Install dependencies
         run: |
+          flutter pub add sensors_plus:7.1.1
           flutter pub upgrade --major-versions
           flutter pub get
 
