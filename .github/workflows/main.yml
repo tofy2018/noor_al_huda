@@ -33,11 +33,11 @@ jobs:
           rm -rf android
           flutter create . --platforms android
 
-      - name: Force Fix Pubspec and Install Dependencies
+      - name: Absolute Dependency Override
         run: |
-          sed -i '/sensors_plus/d' pubspec.yaml
-          flutter pub add sensors_plus
-          flutter pub upgrade --major-versions
+          echo "" >> pubspec.yaml
+          echo "dependency_overrides:" >> pubspec.yaml
+          echo "  sensors_plus: 6.0.0" >> pubspec.yaml
           flutter pub get
 
       - name: Build APK
