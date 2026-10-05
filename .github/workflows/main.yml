@@ -33,6 +33,17 @@ jobs:
           rm -rf android
           flutter create . --platforms android
 
+      - name: Hard Force Android SDK Versions
+        run: |
+          sed -i 's/compileSdk = .*/compileSdk = 34/g' android/app/build.gradle
+          sed -i 's/targetSdk = .*/targetSdk = 34/g' android/app/build.gradle
+          sed -i 's/minSdk = .*/minSdk = 21/g' android/app/build.gradle
+          
+          # البديل الاحتياطي للمتغيرات القديمة
+          sed -i 's/compileSdkVersion .*/compileSdkVersion 34/g' android/app/build.gradle
+          sed -i 's/targetSdkVersion .*/targetSdkVersion 34/g' android/app/build.gradle
+          sed -i 's/minSdkVersion .*/minSdkVersion 21/g' android/app/build.gradle
+
       - name: Install dependencies
         run: flutter pub get
 
