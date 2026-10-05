@@ -28,6 +28,11 @@ jobs:
           channel: 'stable'
           flutter-version: '3.24.0'
 
+      - name: Clean Project Cache
+        run: |
+          flutter clean
+          flutter pub cache clean -f
+
       - name: Install dependencies
         run: |
           flutter pub upgrade --major-versions
