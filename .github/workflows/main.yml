@@ -28,10 +28,10 @@ jobs:
           channel: 'stable'
           flutter-version: '3.24.0'
 
-      - name: Clean Project Cache
+      - name: Recreate Android Project Configuration
         run: |
-          flutter clean
-          flutter pub cache clean -f
+          rm -rf android
+          flutter create . --platforms android
 
       - name: Install dependencies
         run: |
